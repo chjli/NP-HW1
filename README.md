@@ -148,7 +148,7 @@ NP-HW1
   Users should give server IP and Port as the arguments of client program.
   If the number of arguments is not two, the client program should terminate.
 
-   ./client <SERVER IP> <SERVER PORT>
+  > ./client <SERVER IP> <SERVER PORT>
 
 --------------------------------------------------------------------------------
 * Exit Command *
