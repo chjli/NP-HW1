@@ -136,7 +136,13 @@ int main(int argc,char *argv[])
 					;
 					else if(strcmp("who",str) == 0)
 					{
-						int j;
+						str = strtok(NULL," \n");
+						if(str)
+						{
+							write(clients[i], err, strlen(err));
+							break;
+						}
+                        int j;
 						for(j=0;j<=client_maxi;j++)
 						{	
 							if(clients[j] < 0)
@@ -152,6 +158,11 @@ int main(int argc,char *argv[])
 					else if(strcmp("name",str) == 0)
 					{
 						str = strtok(NULL,"\n");
+						if(!str)
+						{
+							write(clients[i], err, strlen(err));
+							break;
+						}
 						char test[]="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 						if(strlen(str)==strspn(str,test) && strlen(str)>=2 && strlen(str)<=12)
 						{
@@ -205,6 +216,11 @@ int main(int argc,char *argv[])
 						char rec_ano[] = "[Server] ERROR: The client to which you sent is anonymous.\n";
 						
 						str = strtok(NULL," ");
+						if(!str)
+						{
+							write(clients[i], err, strlen(err));
+							break;
+						}
 						strcpy(target, str);
 						for(j=0;j<=client_maxi;j++)
 							if(strcmp(target,name[j])==0 && j!=i)
